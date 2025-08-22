@@ -1,6 +1,6 @@
 # nbase64 Swift Implementation
 
-[![Rust version](https://github.com/ryh/nbase64)](https://github.com/ryh/nbase64)
+[Rust version](https://github.com/ryh/nbase64)
 
 A Swift implementation of the nbase64 encoding scheme that supports various character sets for Base64 encoding.
 
