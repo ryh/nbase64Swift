@@ -4,7 +4,7 @@ import Foundation
 ///
 /// Use these predefined character sets when encoding or decoding data with Base64.
 /// Each case provides a specific character set with defined properties.
-enum Base64CharacterSet {
+public enum Base64CharacterSet {
     /// Emoji character set containing 65 emoji characters.
     ///
     /// The character set includes a variety of emoji characters, with the hamburger emoji "🍔"
@@ -39,7 +39,7 @@ enum Base64CharacterSet {
     ///
     /// This property returns the complete string of characters used for Base64 encoding,
     /// including the padding character if applicable.
-    var charset: String {
+    public var charset: String {
         switch self {
         case .emoji:
             return "😊😃😄😁😆😅😂🤣😉😇😋😜😝😛🤑🤗🤔🤥😐😑😶😏😒😓😔😕🙃😲😟😦😧😨😩😰😱😳😵😡😠😢😭😤😥😪😫😬🙄😯🌍🌎🌏🌐✨🌟🌌🌠🌙🌚🌛🌜🌝🌞☀️🌭🍔"
@@ -63,7 +63,7 @@ extension Data {
     ///
     /// - Parameter characterSet: The predefined character set to use for encoding.
     /// - Returns: A Base64-encoded string using the specified character set.
-    func base64EncodedString(with characterSet: Base64CharacterSet) -> String {
+    public func base64EncodedString(with characterSet: Base64CharacterSet) -> String {
         return self.base64EncodedString(withCharset: characterSet.charset)
     }
     
@@ -73,42 +73,42 @@ extension Data {
     ///   - customString: The Base64-encoded string to decode.
     ///   - characterSet: The predefined character set that was used for encoding.
     /// - Returns: The decoded data, or `nil` if decoding failed.
-    func base64DecodedFromCustomString(_ customString: String, with characterSet: Base64CharacterSet) -> Data? {
+    public func base64DecodedFromCustomString(_ customString: String, with characterSet: Base64CharacterSet) -> Data? {
         return self.base64DecodedFromCustomString(customString, withCharset: characterSet.charset)
     }
     
     /// Encodes the data using the default emoji character set.
     ///
     /// - Returns: A Base64-encoded string using the default emoji character set.
-    func base64EncodedEmojiString() -> String {
+    public func base64EncodedEmojiString() -> String {
         return self.base64EncodedString(withCharset: Base64CharacterSet.emoji.charset)
     }
     
     /// Encodes the data using the default Chinese character set.
     ///
     /// - Returns: A Base64-encoded string using the default Chinese character set.
-    func base64EncodedChineseString() -> String {
+    public func base64EncodedChineseString() -> String {
         return self.base64EncodedString(withCharset: Base64CharacterSet.chinese.charset)
     }
     
     /// Encodes the data using the URL-safe character set.
     ///
     /// - Returns: A Base64-encoded string using the URL-safe character set.
-    func base64EncodedURLSafeString() -> String {
+    public func base64EncodedURLSafeString() -> String {
         return self.base64EncodedString(withCharset: Base64CharacterSet.urlSafe.charset)
     }
     
     /// Encodes the data using the bcrypt character set.
     ///
     /// - Returns: A Base64-encoded string using the bcrypt character set.
-    func base64EncodedBcryptString() -> String {
+    public func base64EncodedBcryptString() -> String {
         return self.base64EncodedString(withCharset: Base64CharacterSet.bcrypt.charset)
     }
     
     /// Encodes the data using the crypt character set.
     ///
     /// - Returns: A Base64-encoded string using the crypt character set.
-    func base64EncodedCryptString() -> String {
+    public func base64EncodedCryptString() -> String {
         return self.base64EncodedString(withCharset: Base64CharacterSet.crypt.charset)
     }
     
@@ -117,7 +117,7 @@ extension Data {
     /// - Parameter charset: The custom emoji character set to use for encoding.
     ///                      Must contain at least 64 characters.
     /// - Returns: A Base64-encoded string using the specified character set.
-    func base64EncodedEmojiString(withCharset charset: String) -> String {
+    public func base64EncodedEmojiString(withCharset charset: String) -> String {
         return self.base64EncodedString(withCharset: charset)
     }
     
@@ -126,7 +126,7 @@ extension Data {
     /// - Parameter charset: The custom Chinese character set to use for encoding.
     ///                      Must contain at least 64 characters.
     /// - Returns: A Base64-encoded string using the specified character set.
-    func base64EncodedChineseString(withCharset charset: String) -> String {
+    public func base64EncodedChineseString(withCharset charset: String) -> String {
         return self.base64EncodedString(withCharset: charset)
     }
     
@@ -134,7 +134,7 @@ extension Data {
     ///
     /// - Parameter emojiString: The Base64-encoded string to decode.
     /// - Returns: The decoded data, or `nil` if decoding failed.
-    func base64DecodedFromEmojiString(_ emojiString: String) -> Data? {
+    public func base64DecodedFromEmojiString(_ emojiString: String) -> Data? {
         return self.base64DecodedFromCustomString(emojiString, withCharset: Base64CharacterSet.emoji.charset)
     }
     
@@ -142,7 +142,7 @@ extension Data {
     ///
     /// - Parameter chineseString: The Base64-encoded string to decode.
     /// - Returns: The decoded data, or `nil` if decoding failed.
-    func base64DecodedFromChineseString(_ chineseString: String) -> Data? {
+    public func base64DecodedFromChineseString(_ chineseString: String) -> Data? {
         return self.base64DecodedFromCustomString(chineseString, withCharset: Base64CharacterSet.chinese.charset)
     }
     
@@ -150,7 +150,7 @@ extension Data {
     ///
     /// - Parameter urlSafeString: The Base64-encoded string to decode.
     /// - Returns: The decoded data, or `nil` if decoding failed.
-    func base64DecodedFromURLSafeString(_ urlSafeString: String) -> Data? {
+    public func base64DecodedFromURLSafeString(_ urlSafeString: String) -> Data? {
         return self.base64DecodedFromCustomString(urlSafeString, withCharset: Base64CharacterSet.urlSafe.charset)
     }
     
@@ -158,7 +158,7 @@ extension Data {
     ///
     /// - Parameter bcryptString: The Base64-encoded string to decode.
     /// - Returns: The decoded data, or `nil` if decoding failed.
-    func base64DecodedFromBcryptString(_ bcryptString: String) -> Data? {
+    public func base64DecodedFromBcryptString(_ bcryptString: String) -> Data? {
         return self.base64DecodedFromCustomString(bcryptString, withCharset: Base64CharacterSet.bcrypt.charset)
     }
     
@@ -166,7 +166,7 @@ extension Data {
     ///
     /// - Parameter cryptString: The Base64-encoded string to decode.
     /// - Returns: The decoded data, or `nil` if decoding failed.
-    func base64DecodedFromCryptString(_ cryptString: String) -> Data? {
+    public func base64DecodedFromCryptString(_ cryptString: String) -> Data? {
         return self.base64DecodedFromCustomString(cryptString, withCharset: Base64CharacterSet.crypt.charset)
     }
     
@@ -177,7 +177,7 @@ extension Data {
     ///   - charset: The custom emoji character set that was used for encoding.
     ///              Must contain at least 64 characters.
     /// - Returns: The decoded data, or `nil` if decoding failed.
-    func base64DecodedFromEmojiString(_ emojiString: String, withCharset charset: String) -> Data? {
+    public func base64DecodedFromEmojiString(_ emojiString: String, withCharset charset: String) -> Data? {
         return self.base64DecodedFromCustomString(emojiString, withCharset: charset)
     }
     
@@ -188,7 +188,7 @@ extension Data {
     ///   - charset: The custom Chinese character set that was used for encoding.
     ///              Must contain at least 64 characters.
     /// - Returns: The decoded data, or `nil` if decoding failed.
-    func base64DecodedFromChineseString(_ chineseString: String, withCharset charset: String) -> Data? {
+    public func base64DecodedFromChineseString(_ chineseString: String, withCharset charset: String) -> Data? {
         return self.base64DecodedFromCustomString(chineseString, withCharset: charset)
     }
     
@@ -198,7 +198,7 @@ extension Data {
     ///                      Must contain at least 64 characters. If 65 characters are provided,
     ///                      the 65th character is used as the padding character.
     /// - Returns: A Base64-encoded string using the specified character set.
-    func base64EncodedString(withCharset charset: String) -> String {
+    public func base64EncodedString(withCharset charset: String) -> String {
         let standardEncoded = self.base64EncodedString()
         return Self.mapStandardToCustom(standardEncoded, charset: charset)
     }
@@ -211,7 +211,7 @@ extension Data {
     ///              Must contain at least 64 characters. If 65 characters were used for encoding,
     ///              the 65th character should be provided as part of the charset.
     /// - Returns: The decoded data, or `nil` if decoding failed.
-    func base64DecodedFromCustomString(_ customString: String, withCharset charset: String) -> Data? {
+    public func base64DecodedFromCustomString(_ customString: String, withCharset charset: String) -> Data? {
         let standardEncoded = Self.mapCustomToStandard(customString, charset: charset)
         return Data(base64Encoded: standardEncoded)
     }
@@ -291,7 +291,7 @@ extension String {
     ///
     /// - Parameter characterSet: The predefined character set to use for encoding.
     /// - Returns: A Base64-encoded string using the specified character set, or `nil` if the string cannot be encoded.
-    func base64EncodedString(with characterSet: Base64CharacterSet) -> String? {
+    public func base64EncodedString(with characterSet: Base64CharacterSet) -> String? {
         return self.data(using: .utf8)?.base64EncodedString(with: characterSet)
     }
     
@@ -301,7 +301,7 @@ extension String {
     ///   - customString: The Base64-encoded string to decode.
     ///   - characterSet: The predefined character set that was used for encoding.
     /// - Returns: The decoded string, or `nil` if decoding failed.
-    func base64DecodedFromCustomString(_ customString: String, with characterSet: Base64CharacterSet) -> String? {
+    public func base64DecodedFromCustomString(_ customString: String, with characterSet: Base64CharacterSet) -> String? {
         guard let data = Data().base64DecodedFromCustomString(customString, with: characterSet) else { return nil }
         return String(data: data, encoding: .utf8)
     }
@@ -309,35 +309,35 @@ extension String {
     /// Encodes the string using the default emoji character set.
     ///
     /// - Returns: A Base64-encoded string using the default emoji character set, or `nil` if the string cannot be encoded.
-    func base64EncodedEmojiString() -> String? {
+    public func base64EncodedEmojiString() -> String? {
         return self.data(using: .utf8)?.base64EncodedEmojiString()
     }
     
     /// Encodes the string using the default Chinese character set.
     ///
     /// - Returns: A Base64-encoded string using the default Chinese character set, or `nil` if the string cannot be encoded.
-    func base64EncodedChineseString() -> String? {
+    public func base64EncodedChineseString() -> String? {
         return self.data(using: .utf8)?.base64EncodedChineseString()
     }
     
     /// Encodes the string using the URL-safe character set.
     ///
     /// - Returns: A Base64-encoded string using the URL-safe character set, or `nil` if the string cannot be encoded.
-    func base64EncodedURLSafeString() -> String? {
+    public func base64EncodedURLSafeString() -> String? {
         return self.data(using: .utf8)?.base64EncodedURLSafeString()
     }
     
     /// Encodes the string using the bcrypt character set.
     ///
     /// - Returns: A Base64-encoded string using the bcrypt character set, or `nil` if the string cannot be encoded.
-    func base64EncodedBcryptString() -> String? {
+    public func base64EncodedBcryptString() -> String? {
         return self.data(using: .utf8)?.base64EncodedBcryptString()
     }
     
     /// Encodes the string using the crypt character set.
     ///
     /// - Returns: A Base64-encoded string using the crypt character set, or `nil` if the string cannot be encoded.
-    func base64EncodedCryptString() -> String? {
+    public func base64EncodedCryptString() -> String? {
         return self.data(using: .utf8)?.base64EncodedCryptString()
     }
     
@@ -346,7 +346,7 @@ extension String {
     /// - Parameter charset: The custom emoji character set to use for encoding.
     ///                      Must contain at least 64 characters.
     /// - Returns: A Base64-encoded string using the specified character set, or `nil` if the string cannot be encoded.
-    func base64EncodedEmojiString(withCharset charset: String) -> String? {
+    public func base64EncodedEmojiString(withCharset charset: String) -> String? {
         return self.data(using: .utf8)?.base64EncodedEmojiString(withCharset: charset)
     }
     
@@ -355,14 +355,14 @@ extension String {
     /// - Parameter charset: The custom Chinese character set to use for encoding.
     ///                      Must contain at least 64 characters.
     /// - Returns: A Base64-encoded string using the specified character set, or `nil` if the string cannot be encoded.
-    func base64EncodedChineseString(withCharset charset: String) -> String? {
+    public func base64EncodedChineseString(withCharset charset: String) -> String? {
         return self.data(using: .utf8)?.base64EncodedChineseString(withCharset: charset)
     }
     
     /// Decodes a Base64-encoded string using the default emoji character set.
     ///
     /// - Returns: The decoded string, or `nil` if decoding failed.
-    func base64DecodedFromEmojiString() -> String? {
+    public func base64DecodedFromEmojiString() -> String? {
         guard let data = Data().base64DecodedFromEmojiString(self) else { return nil }
         return String(data: data, encoding: .utf8)
     }
@@ -370,7 +370,7 @@ extension String {
     /// Decodes a Base64-encoded string using the default Chinese character set.
     ///
     /// - Returns: The decoded string, or `nil` if decoding failed.
-    func base64DecodedFromChineseString() -> String? {
+    public func base64DecodedFromChineseString() -> String? {
         guard let data = Data().base64DecodedFromChineseString(self) else { return nil }
         return String(data: data, encoding: .utf8)
     }
@@ -378,7 +378,7 @@ extension String {
     /// Decodes a Base64-encoded string using the URL-safe character set.
     ///
     /// - Returns: The decoded string, or `nil` if decoding failed.
-    func base64DecodedFromURLSafeString() -> String? {
+    public func base64DecodedFromURLSafeString() -> String? {
         guard let data = Data().base64DecodedFromURLSafeString(self) else { return nil }
         return String(data: data, encoding: .utf8)
     }
@@ -386,7 +386,7 @@ extension String {
     /// Decodes a Base64-encoded string using the bcrypt character set.
     ///
     /// - Returns: The decoded string, or `nil` if decoding failed.
-    func base64DecodedFromBcryptString() -> String? {
+    public func base64DecodedFromBcryptString() -> String? {
         guard let data = Data().base64DecodedFromBcryptString(self) else { return nil }
         return String(data: data, encoding: .utf8)
     }
@@ -394,7 +394,7 @@ extension String {
     /// Decodes a Base64-encoded string using the crypt character set.
     ///
     /// - Returns: The decoded string, or `nil` if decoding failed.
-    func base64DecodedFromCryptString() -> String? {
+    public func base64DecodedFromCryptString() -> String? {
         guard let data = Data().base64DecodedFromCryptString(self) else { return nil }
         return String(data: data, encoding: .utf8)
     }
@@ -404,7 +404,7 @@ extension String {
     /// - Parameter charset: The custom emoji character set that was used for encoding.
     ///                      Must contain at least 64 characters.
     /// - Returns: The decoded string, or `nil` if decoding failed.
-    func base64DecodedFromEmojiString(withCharset charset: String) -> String? {
+    public func base64DecodedFromEmojiString(withCharset charset: String) -> String? {
         guard let data = Data().base64DecodedFromEmojiString(self, withCharset: charset) else { return nil }
         return String(data: data, encoding: .utf8)
     }
@@ -414,7 +414,7 @@ extension String {
     /// - Parameter charset: The custom Chinese character set that was used for encoding.
     ///                      Must contain at least 64 characters.
     /// - Returns: The decoded string, or `nil` if decoding failed.
-    func base64DecodedFromChineseString(withCharset charset: String) -> String? {
+    public func base64DecodedFromChineseString(withCharset charset: String) -> String? {
         guard let data = Data().base64DecodedFromChineseString(self, withCharset: charset) else { return nil }
         return String(data: data, encoding: .utf8)
     }
@@ -425,7 +425,7 @@ extension String {
     ///                      Must contain at least 64 characters. If 65 characters are provided,
     ///                      the 65th character is used as the padding character.
     /// - Returns: A Base64-encoded string using the specified character set, or `nil` if the string cannot be encoded.
-    func base64EncodedString(withCharset charset: String) -> String? {
+    public func base64EncodedString(withCharset charset: String) -> String? {
         return self.data(using: .utf8)?.base64EncodedString(withCharset: charset)
     }
     
@@ -437,7 +437,7 @@ extension String {
     ///              Must contain at least 64 characters. If 65 characters were used for encoding,
     ///              the 65th character should be provided as part of the charset.
     /// - Returns: The decoded string, or `nil` if decoding failed.
-    func base64DecodedFromCustomString(_ customString: String, withCharset charset: String) -> String? {
+    public func base64DecodedFromCustomString(_ customString: String, withCharset charset: String) -> String? {
         guard let data = Data().base64DecodedFromCustomString(customString, withCharset: charset) else { return nil }
         return String(data: data, encoding: .utf8)
     }
